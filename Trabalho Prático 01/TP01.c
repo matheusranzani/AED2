@@ -89,6 +89,28 @@ void insere(char* chave, int valor) {
     p->valor = valor;
 }
 
+// Libera a memória utilizada pela Tabela
+void libera() {
+    No* p;
+    No* q;
+
+    // Desaloca todos os nós da tabela
+    for (int i = 0; i < tamanho_tabela; i++) {
+        p = tabela[i];
+
+        while (p != NULL) {
+            q = p;
+            p = p->proximo;
+
+            free(q);
+        }
+    }
+
+    // Desaloca a tabela
+    free(tabela);
+    tabela = NULL;
+}
+
 // Calcula a pontução do texto de um aluno
 int calcula_pontuacao(char* texto) {
     int pontuacao = 0;
@@ -150,6 +172,8 @@ int main() {
     for (int i = 0; i < M; i++) {
         printf("%d\n", calcula_pontuacao(texto_alunos[i]));
     }
+
+    libera();
 
     return 0;
 }
