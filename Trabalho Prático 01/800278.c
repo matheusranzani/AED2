@@ -94,7 +94,7 @@ void libera() {
     No* p;
     No* q;
 
-    // Desaloca todos os nós da abela
+    // Desaloca todos os nós da Tabela
     for (int i = 0; i < tamanho_tabela; i++) {
         p = tabela[i];
 
